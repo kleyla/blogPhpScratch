@@ -1,0 +1,39 @@
+body {
+  background-image: url("./../img/full-bloom.png");
+}
+
+.jumbotron {
+  background-color: #b293c0;
+  color: #ffffff;
+}
+
+.card-header {
+  background-color: #93c0b2 !important;
+  color: white;
+}
+
+.navbar {
+  background-color: white !important;
+}
+
+.navbar-brand:link {
+  color: #b293c0 !important;
+}
+.navbar-brand:visited {
+  color: #93c0b2;
+}
+
+.navbar-brand:hover {
+  color: #c0b293;
+}
+
+.navbar-brand:active {
+  color: #93c0b2;
+}
+
+#miNavbar li a:link, #miNavbar li a:visited {
+  color: #2b2b2b !important;
+}
+#miNavbar li a:hover, #miNavbar li a:active {
+  color: #93c0b2 !important;
+}
