@@ -1,5 +1,7 @@
 <?php
 
+include_once 'RepositorioUsuario.inc.php';
+
 class ValidadorRegistro
 {
     private $aviso_inicio;
@@ -7,24 +9,30 @@ class ValidadorRegistro
 
     private $nombre;
     private $email;
+    private $pass;
 
     private $error_nombre;
     private $error_email;
     private $error_pass;
     private $error_pass2;
 
-    public function __construct($nombre, $email, $pass, $pass2)
+    public function __construct($nombre, $email, $pass, $pass2, $conexion)
     {
         $this->aviso_inicio = "<br><div class='alert alert-danger' role='alert'>";
         $this->aviso_cierre = "</div>";
 
         $this->nombre = "";
         $this->email = "";
+        $this->pass = "";
 
-        $this->error_nombre = $this->validar_nombre($nombre);
-        $this->error_email = $this->validar_email($email);
+        $this->error_nombre = $this->validar_nombre($conexion, $nombre);
+        $this->error_email = $this->validar_email($conexion, $email);
         $this->error_pass = $this->validar_pass($pass);
         $this->error_pass2 = $this->validar_pass2($pass, $pass2);
+
+        if ($this->error_pass === "" && $this->error_pass2 === "") {
+            $this->pass = $pass;
+        }
     }
 
     private function variable_iniciada($variable)
@@ -36,7 +44,7 @@ class ValidadorRegistro
         }
     }
 
-    private function validar_nombre($nombre)
+    private function validar_nombre($conexion, $nombre)
     {
         if (!$this->variable_iniciada($nombre)) {
             return "Debes escribir un nombre de usuario";
@@ -49,15 +57,21 @@ class ValidadorRegistro
         if (strlen($nombre) > 24) {
             return "El nombre no puede ocupar mas de 24 caracteres";
         }
+        if (RepositorioUsuario::nombre_existe($conexion, $nombre)) {
+            return "Este nombre de usuario ya existe";
+        }
         return "";
     }
 
-    private function validar_email($email)
+    private function validar_email($conexion, $email)
     {
         if (!$this->variable_iniciada($email)) {
             return "Debes proporcionar un email";
         } else {
             $this->email = $email;
+        }
+        if (RepositorioUsuario::email_existe($conexion, $email)) {
+            return "Este email ya esta en uso, pruebe otro email o <a href='#'>Intente recuperar su contrasenha</a>";
         }
         return "";
     }
@@ -90,6 +104,11 @@ class ValidadorRegistro
     {
         return $this->email;
     }
+    public function get_pass()
+    {
+        return $this->pass;
+    }
+
     public function get_error_nombre()
     {
         return $this->error_nombre;

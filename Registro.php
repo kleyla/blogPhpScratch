@@ -1,18 +1,29 @@
 <?php
 include_once 'app/Conexion.inc.php';
+include_once 'app/Usuario.inc.php';
 include_once 'app/RepositorioUsuario.inc.php';
 include_once 'app/ValidadorRegistro.inc.php';
 
 if (isset($_POST['enviar'])) {
+    Conexion::open_conexion();
     $validador = new ValidadorRegistro(
         $_POST['nombre'],
         $_POST['email'],
         $_POST['pass'],
-        $_POST['pass2']
+        $_POST['pass2'],
+        Conexion::get_conexion()
     );
     if ($validador->registro_valido()) {
-        echo "Todo correcto";
+        // echo "Todo correcto";
+        $usuario = new Usuario('', $validador->get_nombre(), $validador->get_email(), $validador->get_pass(), '', '');
+        $usuario_insertado = RepositorioUsuario::insertar_usuario(Conexion::get_conexion(), $usuario);
+        if ($usuario_insertado) {
+            //redirigir al login
+        } else {
+            //
+        }
     }
+    Conexion::close_conexion();
 }
 $titulo = 'Registro';
 

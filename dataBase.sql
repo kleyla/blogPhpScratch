@@ -2,9 +2,9 @@ CREATE DATABASE miBlog;
 USE miBlog;
 
 CREATE TABLE usuarios (
-    id int NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR(25) NOT NULL,
-    email VARCHAR(255) NOT NULL,
+    id int NOT NULL UNIQUE AUTO_INCREMENT,
+    nombre VARCHAR(25) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
     pass VARCHAR(40) NOT NULL,
     fecha_registro DATETIME NOT NULL,
     activo TINYINT NOT NULL,

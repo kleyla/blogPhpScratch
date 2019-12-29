@@ -4,8 +4,8 @@ include_once 'app/RepositorioUsuario.inc.php';
 
 $titulo = 'Blog';
 
-include_once 'Views/layout/header.inc.php';
-include_once 'Views/layout/navbar.inc.php';
+include_once 'layout/header.inc.php';
+include_once 'layout/navbar.inc.php';
 ?>
 
 <div class="container">
@@ -33,6 +33,7 @@ include_once 'Views/layout/navbar.inc.php';
                     </div>
                 </div>
             </div>
+            <br>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -47,6 +48,7 @@ include_once 'Views/layout/navbar.inc.php';
                     </div>
                 </div>
             </div>
+            <br>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -82,5 +84,5 @@ include_once 'Views/layout/navbar.inc.php';
 </div>
 
 <?php
-include_once 'Views/layout/footer.inc.php';
+include_once 'layout/footer.inc.php';
 ?>

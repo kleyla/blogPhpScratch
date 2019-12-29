@@ -11,7 +11,7 @@ class Conexion
                 include_once 'config.inc.php';
                 //mysqli
                 //pdo
-                self::$conexion = new PDO("mysql:host=$nombre_servidor; dbname=$nombre_base_datos", $nombre_usuario, $password);
+                self::$conexion = new PDO('mysql:host=' . NOMBRE_SERVIDOR . '; dbname='.NOMBRE_DB, NOMBRE_USUARIO, PASSWORD);
                 self::$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 self::$conexion->exec("SET CHARACTER SET utf8");
                 // print "Conexion opened"."<br>";
@@ -24,13 +24,13 @@ class Conexion
 
     public static function close_conexion()
     {
-        if( isset(self::$conexion)){
+        if (isset(self::$conexion)) {
             self::$conexion = null;
             // print "Conexion closed";
         }
     }
 
-    public static function get_conexion ()
+    public static function get_conexion()
     {
         return self::$conexion;
     }
