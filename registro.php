@@ -3,6 +3,7 @@ include_once 'app/Conexion.inc.php';
 include_once 'app/Usuario.inc.php';
 include_once 'app/RepositorioUsuario.inc.php';
 include_once 'app/ValidadorRegistro.inc.php';
+include_once 'app/Redireccion.inc.php';
 
 if (isset($_POST['enviar'])) {
     Conexion::open_conexion();
@@ -15,10 +16,18 @@ if (isset($_POST['enviar'])) {
     );
     if ($validador->registro_valido()) {
         // echo "Todo correcto";
-        $usuario = new Usuario('', $validador->get_nombre(), $validador->get_email(), $validador->get_pass(), '', '');
+        $usuario = new Usuario(
+            '',
+            $validador->get_nombre(),
+            $validador->get_email(),
+            password_hash($validador->get_pass(), PASSWORD_DEFAULT),
+            '',
+            ''
+        );
         $usuario_insertado = RepositorioUsuario::insertar_usuario(Conexion::get_conexion(), $usuario);
         if ($usuario_insertado) {
-            //redirigir al login
+            //redirigir al registro correcto
+            Redireccion::redirigir(RUTA_REGISTRO_CORRECTO.'?nombre='.$usuario->get_nombre());
         } else {
             //
         }

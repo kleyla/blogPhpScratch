@@ -5,7 +5,7 @@ CREATE TABLE usuarios (
     id int NOT NULL UNIQUE AUTO_INCREMENT,
     nombre VARCHAR(25) NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL UNIQUE,
-    pass VARCHAR(40) NOT NULL,
+    pass VARCHAR(255) NOT NULL,
     fecha_registro DATETIME NOT NULL,
     activo TINYINT NOT NULL,
     PRIMARY KEY (id)

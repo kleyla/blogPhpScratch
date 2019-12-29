@@ -8,7 +8,7 @@ Conexion::close_conexion();
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
 
-        <a class="navbar-brand" href="#">Mi sitio</a>
+        <a class="navbar-brand" href="<?php echo SERVIDOR ?>">Mi sitio</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#miNavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -16,10 +16,13 @@ Conexion::close_conexion();
         <div class="collapse navbar-collapse" id="miNavbar">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Entradas <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="<?php echo RUTA_ENTRADA ?>">Entradas <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="<?php echo RUTA_FAVORITOS ?>">Favoritos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo RUTA_AUTORES ?>">Autores</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,13 +47,13 @@ Conexion::close_conexion();
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="<?php echo RUTA_LOGIN ?>">
                         <i class="material-icons">arrow_forward</i>
                         Iniciar sesion
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Registro.php">
+                    <a class="nav-link" href="<?php echo RUTA_REGISTRO ?>">
                         <i class="material-icons">add</i>
                         Registro
                     </a>
