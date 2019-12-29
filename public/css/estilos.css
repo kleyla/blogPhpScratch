@@ -1,5 +1,5 @@
 body {
-  background-image: url("./../img/full-bloom.png");
+  background-image: url("../img/full-bloom.png") !important;
 }
 
 .jumbotron {
