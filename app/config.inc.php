@@ -8,7 +8,7 @@ define('PASSWORD', '');
 define('NOMBRE_DB', 'miBlog');
 
 // RUTAS DE LA WEB
-define('SERVIDOR', "http://localhost/blog");
+define('SERVIDOR', "http://localhost/blogPhpScratch");
 define('RUTA_REGISTRO', SERVIDOR . "/registro.php");
 define('RUTA_REGISTRO_CORRECTO', SERVIDOR . '/registro-correcto.php');
 define('RUTA_LOGIN', SERVIDOR . '/login.php');

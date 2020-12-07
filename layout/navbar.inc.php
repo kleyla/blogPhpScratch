@@ -6,7 +6,7 @@ Conexion::open_conexion();
 $total_usuarios = RepositorioUsuario::count_users(Conexion::get_conexion());
 // echo count($total_usuarios);
 Conexion::close_conexion();
-
+ 
 if (isset($_POST['salir'])) {
     ControlSesion::cerrar_sesion();
     Redireccion::redirigir(SERVIDOR);
